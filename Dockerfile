@@ -6,7 +6,7 @@ COPY paradox.tar /tmp
 
 RUN tar xvf /tmp/paradox.tar -C /files
 
-RUN apt-get update && apt-get install -y php-pear php5-dev pxlib1 pxlib-dev && cd /files/paradox/paradox-1.4.3 && pecl config-set php_ini $PHP_INI_DIR/php.ini && phpize && ./configure && make && make install && echo "extension=paradox.so" > /usr/local/etc/php/conf.d/paradox.ini
+RUN apt-get update && apt-get install -y php5-mysql php-pear php5-dev pxlib1 pxlib-dev && cd /files/paradox/paradox-1.4.3 && pecl config-set php_ini $PHP_INI_DIR/php.ini && phpize && ./configure && make && make install && echo "extension=paradox.so" > /usr/local/etc/php/conf.d/paradox.ini
 
 RUN rm -rf /tmp/paradox.tar && rm -rf /files && kill -USR2 1
 
